@@ -5,7 +5,7 @@ const signInMiddleware = () => ({
         const { body } = event;
 
         const signInDto: SignInDto = {
-            username: body.username,
+            email: body.email,
             password: body.password,
         };
 

@@ -12,7 +12,7 @@ export default async function authenticate(signInDto: SignInDto): Promise<Authen
         ClientId,
         AuthFlow: 'ADMIN_NO_SRP_AUTH',
         AuthParameters: {
-            USERNAME: signInDto.username,
+            USERNAME: signInDto.email,
             PASSWORD: signInDto.password, 
         }
     } as AdminInitiateAuthRequest).promise();
