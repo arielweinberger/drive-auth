@@ -4,6 +4,10 @@ jspm_packages
 
 # Serverless directories
 .serverless
+.build
 
 # Yarn/NPM
 yarn-error.log
+
+# Environment
+.env.offline

@@ -4,7 +4,10 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "deploy:dev": "sls deploy --stage dev",
+    "offline": "NODE_ENV=offline sls offline --stage dev",
+    "sls:dev": "sls -v --stage dev",
+    "deploy:dev": "yarn sls:dev deploy",
+    "remove:dev": "yarn sls:dev remove",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,11 +22,18 @@
   "homepage": "https://github.com/arielweinberger/drive-auth#readme",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.31",
+    "@types/aws-sdk": "^2.7.0",
+    "dotenv": "^8.1.0",
+    "serverless": "^1.51.0",
+    "serverless-cloudside-plugin": "^1.0.3",
+    "serverless-dotenv-plugin": "^2.1.1",
     "serverless-offline": "^5.10.1",
     "serverless-plugin-typescript": "^1.1.9",
     "typescript": "^3.5.3"
   },
   "dependencies": {
+    "aws-sdk": "^2.521.0",
+    "middy": "^0.29.0",
     "source-map-support": "^0.5.13"
   }
 }

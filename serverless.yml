@@ -2,6 +2,7 @@ service: drive-auth
 
 plugins:
   - serverless-plugin-typescript
+  - serverless-dotenv-plugin
   - serverless-offline
 
 provider:
@@ -11,6 +12,9 @@ provider:
   stage: dev
   region: eu-central-1
   memorySize: 256
+  iamRoleStatements: ${file(resources/role.yml):iamRoleStatements}
+  environment:
+    COGNITO_POOL_ID: ${env:COGNITO_POOL_ID}
 
 package:
   exclude:
@@ -18,9 +22,8 @@ package:
     
 functions:
   signup:
-    handler: handlers/signup.signup
+    handler: handlers/signup.handler
     events:
       - http:
           path: signup
           method: post
-          
