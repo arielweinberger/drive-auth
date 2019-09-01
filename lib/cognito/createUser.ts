@@ -1,9 +1,9 @@
 import AWS from 'aws-sdk';
 import { AdminCreateUserRequest, AdminSetUserPasswordRequest } from 'aws-sdk/clients/cognitoidentityserviceprovider';
-import SignUpDto from '../dto/signup.dto';
+import SignUpDto from '../dto/signUp.dto';
 
 const cognito = new AWS.CognitoIdentityServiceProvider({ apiVersion: '2016-04-18' });
-const UserPoolId = process.env.COGNITO_POOL_ID;
+const UserPoolId = process.env.COGNITO_POOL_ID!;
 
 export default async function createUser(userDetails: SignUpDto) {
     const { User } = await cognito.adminCreateUser({
@@ -16,14 +16,14 @@ export default async function createUser(userDetails: SignUpDto) {
         ],
         MessageAction: 'SUPPRESS',
         DesiredDeliveryMediums: ['EMAIL'],
-    } as AdminCreateUserRequest).promise();
+    }).promise();
 
     await cognito.adminSetUserPassword({
         UserPoolId,
-        Username: User!.Username,
+        Username: User!.Username!,
         Password: userDetails.password,
         Permanent: true,
-    } as AdminSetUserPasswordRequest).promise();
+    }).promise();
 
     return User;
 }

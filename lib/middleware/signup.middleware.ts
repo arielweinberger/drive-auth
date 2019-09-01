@@ -1,6 +1,6 @@
-import SignUpDto from "../dto/signup.dto";
+import SignUpDto from "../dto/signUp.dto";
 
-const signupMiddleware = () => ({
+const signUpMiddleware = () => ({
     before: ({ event, context }, next) => {
         const { body } = event;
 
@@ -17,4 +17,4 @@ const signupMiddleware = () => ({
     },
 });
 
-export default signupMiddleware;
+export default signUpMiddleware;

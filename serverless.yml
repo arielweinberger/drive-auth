@@ -15,6 +15,7 @@ provider:
   iamRoleStatements: ${file(resources/role.yml):iamRoleStatements}
   environment:
     COGNITO_POOL_ID: ${env:COGNITO_POOL_ID}
+    COGNITO_CLIENT_ID: ${env:COGNITO_CLIENT_ID}
 
 package:
   exclude:
@@ -27,3 +28,11 @@ functions:
       - http:
           path: signup
           method: post
+          cors: true
+  signin:
+    handler: handlers/signin.handler
+    events:
+      - http:
+          path: signin
+          method: post
+          cors: true
