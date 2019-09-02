@@ -9,7 +9,7 @@
     "sls:test": "sls -v --stage test",
     "deploy:dev": "yarn sls:dev deploy",
     "remove:dev": "yarn sls:dev remove",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests found\""
   },
   "repository": {
     "type": "git",

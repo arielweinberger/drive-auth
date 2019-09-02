@@ -8,3 +8,8 @@ steps:
   image: node:10-alpine
   commands:
     - yarn install
+  
+- name: test
+  image: node:10-alpine
+  commands:
+    - yarn test
