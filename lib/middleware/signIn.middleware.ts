@@ -1,11 +1,11 @@
 import SignInDto from "../dto/signIn.dto";
 
-const signInMiddleware = () => ({
+export default () => ({
     before: ({ event, context }, next) => {
         const { body } = event;
 
         const signInDto: SignInDto = {
-            email: body.email,
+            phone_number: body.phone_number,
             password: body.password,
         };
 
@@ -13,5 +13,3 @@ const signInMiddleware = () => ({
         next();
     },
 });
-
-export default signInMiddleware;

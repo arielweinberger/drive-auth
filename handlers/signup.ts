@@ -12,15 +12,14 @@ interface Context extends APIGatewayEventRequestContext {
 
 const signUp = async (_event: APIGatewayProxyEvent, context: Context): Promise<APIGatewayProxyResult> => {
     try {
-        await createUser(context.signUpDto);
-    } catch ({ code, message}) {
-        throw new createError.Unauthorized(JSON.stringify({ code, message }));
+        const { userId } = await createUser(context.signUpDto);
+        return {
+            statusCode: 201,
+            body: JSON.stringify({ userId }),
+        };
+    } catch ({ code }) {
+        throw new createError.Unauthorized(JSON.stringify({ code }));
     }
-
-    return {
-        statusCode: 201,
-        body: JSON.stringify({}),
-    };
 };
 
 export const handler = commonMiddleware(signUp)

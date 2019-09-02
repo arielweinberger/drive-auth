@@ -22,16 +22,38 @@ package:
     
 functions:
   signup:
-    handler: handlers/signup.handler
+    handler: handlers/signUp.handler
     events:
       - http:
           path: signup
           method: post
           cors: true
   signin:
-    handler: handlers/signin.handler
+    handler: handlers/signIn.handler
     events:
       - http:
           path: signin
           method: post
           cors: true
+  getConfirmationStatus:
+    handler: handlers/getConfirmationStatus.handler
+    events:
+      - http:
+          path: user/{id}/confirm
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+  confirm:
+    handler: handlers/confirm.handler
+    events:
+      - http:
+          path: user/{id}/confirm
+          method: post
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
