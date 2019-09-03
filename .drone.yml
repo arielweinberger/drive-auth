@@ -5,11 +5,11 @@ type: docker
 
 steps:
 - name: install
-  image: node:10-alpine
+  image: node:12-alpine
   commands:
     - yarn install
   
 - name: test
-  image: node:10-alpine
+  image: node:12-alpine
   commands:
     - yarn test
